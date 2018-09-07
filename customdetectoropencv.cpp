@@ -1,38 +1,22 @@
-/* Copyright 2015 The TensorFlow Authors. All Rights Reserved.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-==============================================================================*/
-
-// A minimal but useful C++ example showing how to load an Imagenet-style object
-// recognition TensorFlow model, prepare input images for it, run them through
-// the graph, and interpret the results.
-//
-// It's designed to have as few dependencies and be as clear as possible, so
-// it's more verbose than it could be in production code. In particular, using
-// auto for the types of a lot of the returned values from TensorFlow calls can
-// remove a lot of boilerplate, but I find the explicit types useful in sample
-// code to make it simple to look up the classes involved.
-//
-// To use it, compile and then run in a working directory with the
-// learning/brain/tutorials/label_image/data/ folder below it, and you should
-// see the top five labels for the example Lena image output. You can then
-// customize it to use your own models or images by changing the file names at
-// the top of the main() function.
-//
-// The googlenet_graph.pb file included by default is created from Inception.
-//
-// Note that, for GIF inputs, to reuse existing code, only single-frame ones
-// are supported.
+/*
+ *  Copyright (C) 2015-2018 Savoir-faire Linux Inc.
+ *  
+ *  Author: Timothée Menais <timothee.menais@savoirfairelinux.com>
+ *  
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA.
+ */
 
 #include <fstream>
 #include <utility>
@@ -63,14 +47,9 @@ limitations under the License.
 #include "tensorflow/core/public/session.h"
 #include "tensorflow/core/util/command_line_flags.h"
 
-#include "/usr/local/include/opencv2/objdetect.hpp"
-#include "/usr/local/include/opencv2/highgui.hpp"
-#include "/usr/local/include/opencv2/imgproc.hpp"
-//#include "/usr/local/include/opencv2/imgcodecs.hpp"
-
-
-
-
+#include <opencv2/objdetect.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 // These are all common classes it's handy to reference with no namespace.
 using tensorflow::Flag;
